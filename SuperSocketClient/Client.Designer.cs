@@ -61,6 +61,7 @@
             this.txt_Conent.Name = "txt_Conent";
             this.txt_Conent.Size = new System.Drawing.Size(377, 557);
             this.txt_Conent.TabIndex = 1;
+            this.txt_Conent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Conent_KeyDown);
             // 
             // num_ThreadCount
             // 

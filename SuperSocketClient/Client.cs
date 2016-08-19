@@ -85,7 +85,7 @@ namespace SuperSocketClient
             try
             {
                 sp.Start();
-                string sendMessage = "echo:" + txt_Conent.Text.TrimEnd() + "\n" + DateTime.Now + "\r\n";
+                string sendMessage = "echo:" + txt_Conent.Text.TrimEnd() + "\r\n" + DateTime.Now;// + "\r\n";
                 clientSocket.Send(Encoding.ASCII.GetBytes(sendMessage));
 
                 //Receive Message
@@ -111,6 +111,15 @@ namespace SuperSocketClient
 
             
         }
+
+        private void txt_Conent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.A))
+            {
+                txt_Conent.SelectAll();
+            }
+        }
+
     }
 
     public class ThreadRunProgress
