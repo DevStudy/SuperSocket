@@ -16,7 +16,7 @@ namespace SuperSocketServer.AppSessions
         }
         protected override void HandleUnknownRequest(StringRequestInfo requestInfo)
         {
-            this.Send("TCC Unknow request");
+            this.Send("TCC Unknow request" + requestInfo.Body);
         }
 
         protected override void HandleException(Exception e)

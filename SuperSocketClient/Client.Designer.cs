@@ -36,6 +36,10 @@
             this.lbl_Server = new System.Windows.Forms.Label();
             this.lbl_port = new System.Windows.Forms.Label();
             this.lbl_ThreadCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chk_CloseConnection = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_Receive = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_ThreadCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Port)).BeginInit();
             this.SuspendLayout();
@@ -55,11 +59,11 @@
             // 
             this.txt_Conent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_Conent.Location = new System.Drawing.Point(12, 12);
+            this.txt_Conent.Location = new System.Drawing.Point(12, 48);
             this.txt_Conent.MaxLength = 0;
             this.txt_Conent.Multiline = true;
             this.txt_Conent.Name = "txt_Conent";
-            this.txt_Conent.Size = new System.Drawing.Size(377, 557);
+            this.txt_Conent.Size = new System.Drawing.Size(377, 244);
             this.txt_Conent.TabIndex = 1;
             this.txt_Conent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Conent_KeyDown);
             // 
@@ -111,7 +115,7 @@
             this.num_Port.Size = new System.Drawing.Size(65, 20);
             this.num_Port.TabIndex = 2;
             this.num_Port.Value = new decimal(new int[] {
-            2020,
+            1024,
             0,
             0,
             0});
@@ -143,11 +147,55 @@
             this.lbl_ThreadCount.TabIndex = 6;
             this.lbl_ThreadCount.Text = "ThreadCount";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(305, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "The message Body has already added: echo:+messagebody+#";
+            // 
+            // chk_CloseConnection
+            // 
+            this.chk_CloseConnection.AutoSize = true;
+            this.chk_CloseConnection.Location = new System.Drawing.Point(398, 145);
+            this.chk_CloseConnection.Name = "chk_CloseConnection";
+            this.chk_CloseConnection.Size = new System.Drawing.Size(98, 17);
+            this.chk_CloseConnection.TabIndex = 8;
+            this.chk_CloseConnection.Text = "每次关闭连接";
+            this.chk_CloseConnection.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 335);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Received";
+            // 
+            // txt_Receive
+            // 
+            this.txt_Receive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txt_Receive.Location = new System.Drawing.Point(12, 381);
+            this.txt_Receive.MaxLength = 0;
+            this.txt_Receive.Multiline = true;
+            this.txt_Receive.Name = "txt_Receive";
+            this.txt_Receive.Size = new System.Drawing.Size(377, 172);
+            this.txt_Receive.TabIndex = 10;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 581);
+            this.Controls.Add(this.txt_Receive);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.chk_CloseConnection);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_ThreadCount);
             this.Controls.Add(this.lbl_port);
             this.Controls.Add(this.lbl_Server);
@@ -175,6 +223,10 @@
         private System.Windows.Forms.Label lbl_Server;
         private System.Windows.Forms.Label lbl_port;
         private System.Windows.Forms.Label lbl_ThreadCount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chk_CloseConnection;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_Receive;
     }
 }
 
