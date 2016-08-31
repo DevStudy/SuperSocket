@@ -40,8 +40,11 @@
             this.chk_CloseConnection = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Receive = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.num_ThreadInterval = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.num_ThreadCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Port)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_ThreadInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_send
@@ -99,7 +102,7 @@
             this.txt_Server.Name = "txt_Server";
             this.txt_Server.Size = new System.Drawing.Size(100, 20);
             this.txt_Server.TabIndex = 3;
-            this.txt_Server.Text = "127.0.0.1";
+            this.txt_Server.Text = "159.99.218.140";
             // 
             // num_Port
             // 
@@ -160,7 +163,7 @@
             // chk_CloseConnection
             // 
             this.chk_CloseConnection.AutoSize = true;
-            this.chk_CloseConnection.Location = new System.Drawing.Point(398, 145);
+            this.chk_CloseConnection.Location = new System.Drawing.Point(398, 206);
             this.chk_CloseConnection.Name = "chk_CloseConnection";
             this.chk_CloseConnection.Size = new System.Drawing.Size(98, 17);
             this.chk_CloseConnection.TabIndex = 8;
@@ -187,11 +190,46 @@
             this.txt_Receive.Size = new System.Drawing.Size(377, 172);
             this.txt_Receive.TabIndex = 10;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(395, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Each thread interval";
+            // 
+            // num_ThreadInterval
+            // 
+            this.num_ThreadInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.num_ThreadInterval.Location = new System.Drawing.Point(503, 135);
+            this.num_ThreadInterval.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.num_ThreadInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_ThreadInterval.Name = "num_ThreadInterval";
+            this.num_ThreadInterval.Size = new System.Drawing.Size(57, 20);
+            this.num_ThreadInterval.TabIndex = 11;
+            this.num_ThreadInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 581);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.num_ThreadInterval);
             this.Controls.Add(this.txt_Receive);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chk_CloseConnection);
@@ -208,6 +246,7 @@
             this.Text = "Client";
             ((System.ComponentModel.ISupportInitialize)(this.num_ThreadCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Port)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_ThreadInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +266,8 @@
         private System.Windows.Forms.CheckBox chk_CloseConnection;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_Receive;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown num_ThreadInterval;
     }
 }
 
