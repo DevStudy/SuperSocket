@@ -51,20 +51,22 @@ namespace SuperSocketServer.AppServers
     {
         public StringRequestInfo ParseRequestInfo(string source)
         {
-            string[] requestArry = source.Split(':');
-            if (requestArry.Length > 0)
-            {
-                string key = requestArry[0];
-                StringBuilder sb = new StringBuilder();
-                for (int i = 1; i < requestArry.Length; i++)
-                {
-                    sb.Append(requestArry[i]);
-                }
-                string body = sb.ToString();
+            //string[] requestArry = source.Split(':');
+            //if (requestArry.Length > 0)
+            //{
+            //    string key = requestArry[0];
+            //    StringBuilder sb = new StringBuilder();
+            //    for (int i = 1; i < requestArry.Length; i++)
+            //    {
+            //        sb.Append(requestArry[i]);
+            //    }
+            //    string body = sb.ToString();
 
-                return new StringRequestInfo(key, body, new[] { "" });
-            }
-            return new StringRequestInfo("Unkonw", source, new[] { "" });
+            //    return new StringRequestInfo(key, body, new[] { "" });
+            //}
+            //return new StringRequestInfo("Unkonw", source, new[] { "" });
+            return new StringRequestInfo("Comm", source, new[] { "" });
+            //Comm
         }
     }
 }

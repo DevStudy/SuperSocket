@@ -55,6 +55,7 @@
     <Compile Include="AppSessions\PlayerSession.cs" />
     <Compile Include="AppSessions\TelnetSession.cs" />
     <Compile Include="Commands\Add.cs" />
+    <Compile Include="Commands\Comm.cs" />
     <Compile Include="Commands\Echo.cs" />
     <Compile Include="Commands\Mult.cs" />
     <Compile Include="Commands\Unknow.cs" />

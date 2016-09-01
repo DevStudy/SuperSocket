@@ -36,12 +36,13 @@
             this.lbl_Server = new System.Windows.Forms.Label();
             this.lbl_port = new System.Windows.Forms.Label();
             this.lbl_ThreadCount = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.chk_CloseConnection = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Receive = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.num_ThreadInterval = new System.Windows.Forms.NumericUpDown();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.chk_autoGenerateText = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_ThreadCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Port)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ThreadInterval)).BeginInit();
@@ -66,7 +67,7 @@
             this.txt_Conent.MaxLength = 0;
             this.txt_Conent.Multiline = true;
             this.txt_Conent.Name = "txt_Conent";
-            this.txt_Conent.Size = new System.Drawing.Size(377, 244);
+            this.txt_Conent.Size = new System.Drawing.Size(377, 272);
             this.txt_Conent.TabIndex = 1;
             this.txt_Conent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Conent_KeyDown);
             // 
@@ -98,6 +99,11 @@
             // 
             this.txt_Server.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Server.AutoCompleteCustomSource.AddRange(new string[] {
+            "127.0.0.1",
+            "159.99.218.140"});
+            this.txt_Server.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txt_Server.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txt_Server.Location = new System.Drawing.Point(460, 45);
             this.txt_Server.Name = "txt_Server";
             this.txt_Server.Size = new System.Drawing.Size(100, 20);
@@ -150,20 +156,10 @@
             this.lbl_ThreadCount.TabIndex = 6;
             this.lbl_ThreadCount.Text = "ThreadCount";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(12, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(305, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "The message Body has already added: echo:+messagebody+#";
-            // 
             // chk_CloseConnection
             // 
             this.chk_CloseConnection.AutoSize = true;
-            this.chk_CloseConnection.Location = new System.Drawing.Point(398, 206);
+            this.chk_CloseConnection.Location = new System.Drawing.Point(398, 176);
             this.chk_CloseConnection.Name = "chk_CloseConnection";
             this.chk_CloseConnection.Size = new System.Drawing.Size(98, 17);
             this.chk_CloseConnection.TabIndex = 8;
@@ -178,6 +174,7 @@
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Received";
+            this.label2.Visible = false;
             // 
             // txt_Receive
             // 
@@ -189,6 +186,7 @@
             this.txt_Receive.Name = "txt_Receive";
             this.txt_Receive.Size = new System.Drawing.Size(377, 172);
             this.txt_Receive.TabIndex = 10;
+            this.txt_Receive.Visible = false;
             // 
             // label3
             // 
@@ -223,17 +221,38 @@
             0,
             0});
             // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Location = new System.Drawing.Point(414, 549);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancel.TabIndex = 13;
+            this.btn_Cancel.Text = "Cancel All";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_rest_Click);
+            // 
+            // chk_autoGenerateText
+            // 
+            this.chk_autoGenerateText.AutoSize = true;
+            this.chk_autoGenerateText.Location = new System.Drawing.Point(398, 199);
+            this.chk_autoGenerateText.Name = "chk_autoGenerateText";
+            this.chk_autoGenerateText.Size = new System.Drawing.Size(122, 17);
+            this.chk_autoGenerateText.TabIndex = 14;
+            this.chk_autoGenerateText.Text = "自动生成发送内容";
+            this.chk_autoGenerateText.UseVisualStyleBackColor = true;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 581);
+            this.Controls.Add(this.chk_autoGenerateText);
+            this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.num_ThreadInterval);
             this.Controls.Add(this.txt_Receive);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chk_CloseConnection);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_ThreadCount);
             this.Controls.Add(this.lbl_port);
             this.Controls.Add(this.lbl_Server);
@@ -262,12 +281,13 @@
         private System.Windows.Forms.Label lbl_Server;
         private System.Windows.Forms.Label lbl_port;
         private System.Windows.Forms.Label lbl_ThreadCount;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_CloseConnection;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_Receive;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown num_ThreadInterval;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.CheckBox chk_autoGenerateText;
     }
 }
 
