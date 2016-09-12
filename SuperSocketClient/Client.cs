@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using NLog;
 using ThreadingTimer = System.Threading.Timer;
 using Timer = System.Timers.Timer;
 using WindowsTimer = System.Windows.Forms.Timer;
@@ -36,6 +37,9 @@ namespace SuperSocketClient
         private List<Task> _tasks;
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
+        private NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private NLog.Logger _errorLogger = NLog.LogManager.GetLogger("error");
+        private int _threshold  = 2000;
         #endregion
         
         #region Construction
@@ -126,12 +130,21 @@ namespace SuperSocketClient
         {
             string receivedMsg = string.Empty;
             Stopwatch sp = new Stopwatch();
+            string logMessage = string.Empty;
+            
             //Sned message and receiced
             try
             {
                 sp.Start();
-                //string sendMessage = "echo:" + txt_Conent.Text.TrimEnd() + "#";
+                
                 threadRunProgress.Message = GetSendMessage();
+
+                LogEventInfo ei = new LogEventInfo(LogLevel.Debug, _logger.Name,
+                    logMessage);
+                ei.Properties["macid"] = threadRunProgress.MacId;
+                ei.Message = string.Format("Send message to server at {0}",DateTime.Now);
+                _logger.Log(ei);
+                
                 threadRunProgress.ClientSocket.Send(Encoding.ASCII.GetBytes(threadRunProgress.Message));
 
                 //Receive Message
@@ -142,6 +155,7 @@ namespace SuperSocketClient
                 //ResetRecText(receivedMsg + " was come from:" + threadRunProgress.CurrentIndex);
 
                 sp.Stop();
+
                 _resultList.Add(new AccessRunesult
                 {
                     CurrentIndex = threadRunProgress.CurrentIndex,
@@ -165,10 +179,32 @@ namespace SuperSocketClient
                     threadRunProgress.ClientSocket.Close();
                 }
 
-                //Console.WriteLine(string.Format("Received:{0}",receivedMsg));
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                //Console.ForegroundColor = ConsoleColor.Yellow;
                 //Console.WriteLine(string.Format("Thread:{0},Send and receice spend time:{1}", threadRunProgress.CurrentIndex, sp.ElapsedMilliseconds));
-                Console.WriteLine("Message was come form server:{0}", receivedMsg);
+                
+                //Console.Write(@"MacId :{0} got message from server:{1} ", threadRunProgress.MacId,receivedMsg);
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine(@"Spend:{0}", sp.ElapsedMilliseconds);
+                //Console.ForegroundColor = ConsoleColor.Yellow;
+
+                string message = string.Format(@"Received message from server: '{0}', Spend:{1} ,macid:{2}",
+                    receivedMsg, sp.ElapsedMilliseconds,threadRunProgress.MacId);
+
+                LogEventInfo ei = new LogEventInfo(LogLevel.Debug, _logger.Name,
+                    logMessage);
+                ei.Properties["macid"] = threadRunProgress.MacId;
+                ei.Message = message;
+                
+                _logger.Log(ei);
+
+                if (sp.ElapsedMilliseconds > _threshold)
+                {
+                    LogEventInfo errorEi = new LogEventInfo(LogLevel.Debug, _logger.Name,
+                    logMessage);
+                    errorEi.Properties["macid"] = threadRunProgress.MacId;
+                    errorEi.Message = message;
+                    _errorLogger.Log(errorEi);
+                }
             }
 
             return receivedMsg;
@@ -270,6 +306,25 @@ namespace SuperSocketClient
         public string Message { get; set; }
         public Socket ClientSocket { get; set; }
         public Timer Timer { get; set; }
+
+        public string MacId
+        {
+            get
+            {
+                //like this:144146000001
+                string prefix = "144146";
+                if (CurrentIndex == 0)
+                {
+                    CurrentIndex++;
+                }
+                if (CurrentIndex > 999999)
+                {
+                    CurrentIndex = 999999;
+                }
+                return prefix + CurrentIndex.ToString().PadLeft(6, '0');
+            }
+        }
+    
     }
     public class AccessRunesult
     {

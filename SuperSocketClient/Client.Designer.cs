@@ -108,7 +108,7 @@
             this.txt_Server.Name = "txt_Server";
             this.txt_Server.Size = new System.Drawing.Size(100, 20);
             this.txt_Server.TabIndex = 3;
-            this.txt_Server.Text = "159.99.218.140";
+            this.txt_Server.Text = "192.168.1.104";
             // 
             // num_Port
             // 
@@ -124,7 +124,7 @@
             this.num_Port.Size = new System.Drawing.Size(65, 20);
             this.num_Port.TabIndex = 2;
             this.num_Port.Value = new decimal(new int[] {
-            1024,
+            1208,
             0,
             0,
             0});
